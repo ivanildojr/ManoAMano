@@ -16,19 +16,19 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost:3306/manoamano"
+            url = "jdbc:mysql://10.15.1.156:3306/manoamano"
         }
     }
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost:3306/manoamano"
+            url = "jdbc:mysql://10.15.1.156:3306/manoamano"
         }
     }
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost:3306/manoamano"
+            url = "jdbc:mysql://10.15.1.156:3306/manoamano"
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                jmxEnabled = true

@@ -1,7 +1,7 @@
 package manoamano
 
 class Jogador {
-	//Ivanildo
+
 	String nome
 	
 	String toString() {
