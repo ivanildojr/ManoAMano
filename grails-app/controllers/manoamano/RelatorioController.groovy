@@ -15,7 +15,7 @@ class RelatorioController {
 					order('nome','asc')
 				}
 			}
-			ge 'dataFacada', new Date().clearTime()
+			//ge 'dataFacada', new Date().clearTime()
 			
 		}
 		

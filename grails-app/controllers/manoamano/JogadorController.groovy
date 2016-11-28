@@ -14,6 +14,10 @@ class JogadorController {
         params.max = Math.min(max ?: 10, 100)
         respond Jogador.list(params), model:[jogadorInstanceCount: Jogador.count()]
     }
+	
+	def upload(){
+		render(view: "/jogador/upload")
+	}
 
     def show(Jogador jogadorInstance) {
         respond jogadorInstance
