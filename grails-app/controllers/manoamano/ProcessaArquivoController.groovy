@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat
 class ProcessaArquivoController {
 
  	def rodar() {
+		withForm{ 
+		 
 		def linha;
 		def int n=0;
 		new File("uploadLogs/").eachFile { file->
@@ -146,7 +148,9 @@ class ProcessaArquivoController {
 			dir.deleteDir();
 			println "Apagou a pasta uploadLogs!"
 		}
-
+ 	}.invalidToken {
+	 println "Dupla submissao"
+ 	}
 	}	
 	
 	def teste() {
