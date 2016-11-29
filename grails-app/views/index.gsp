@@ -82,20 +82,17 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-		</div>
+		
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
+			<h1>Mano A Mano</h1>
 			
 
 			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
+				
 				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-					<li class="conrtroller"><g:link controller="Relatorio">Relatorio Controller</g:link></li>
+					
+					<li class="controller"><g:link controller="Relatorio">Relatorio Controller</g:link></li>
+					<li class="controller"><g:link controller="Jogador" action="upload">Upload dos Arquivos</g:link></li>
 					
 						
 				</ul>
