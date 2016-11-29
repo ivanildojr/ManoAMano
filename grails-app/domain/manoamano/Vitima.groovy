@@ -1,5 +1,7 @@
 package manoamano
 
+import java.util.Date;
+
 class Vitima {
 	
 	//Mapeia o atributo da classe Jogador
@@ -7,7 +9,7 @@ class Vitima {
 	
 	static belongsTo = [matador:Jogador, vitima:Jogador]
 	
-	
+	Date dataFacada
 	
     static constraints = {
 		matador nullable:false

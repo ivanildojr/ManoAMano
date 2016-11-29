@@ -20,3 +20,12 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: vitimaInstance, field: 'dataFacada', 'error')} required">
+	<label for="dataFacada">
+		<g:message code="vitima.dataFacada.label" default="Data Facada" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="dataFacada" precision="day"  value="${vitimaInstance?.dataFacada}"  />
+
+</div>
+

@@ -1,13 +1,24 @@
 package manoamano
 
+import org.hibernate.hql.internal.classic.GroupByParser;
+
+import groovy.swing.impl.DefaultAction;
+
 class RelatorioController {
 
+	static defaultAction = "principal"
+	
+	def principal(){
+		
+		def datas = Facadas.where {}.projections { distinct 'dataFacada' }
+		render(view:'principal',model:[datasList:datas])
+		 
+	}
     def index() {
-
-		def jogadores = Jogador.findAll {
-			order('nome','asc')
-			
-		}
+		String data = params.id
+		Date dataRelatorio = Date.parse('yyyy-MM-dd HH:mm:ss',data)
+		
+	
 		
 		def lista = Facadas.withCriteria {
 			vitima {
@@ -15,25 +26,41 @@ class RelatorioController {
 					order('nome','asc')
 				}
 			}
-			//ge 'dataFacada', new Date().clearTime()
+			eq 'dataFacada', dataRelatorio.clearTime()
 			
 		}
+		
+//		def jogadores = Jogador.findAll {
+//			order('nome','asc')
+//			
+//		}
+		
 		
 //		def lista = Facadas.findAll {
 //			vitima.matador.nome == 'Kratos'
 //		}
 		
+		def players = []
 		
 		for(facada in lista){
-		
-			def nomes = facada.vitima.matador.nome +" - "+ facada.vitima.vitima.nome
-			def quantidade = facada.qtdeFacadas
-			def resultado = nomes + " - " + quantidade
-			println  resultado
+			players.push(facada.vitima.matador.nome)
+			players.push(facada.vitima.vitima.nome)
 		
 		}
 		
-		println jogadores
+		def jogadores = []
+
+		for(jogador in players.unique()){
+			Jogador jog = new Jogador()
+			jog.nome = jogador
+			jogadores.push(jog)
+		}
+		
+		
+		
+		
+		
+//		println jogadores
 		render(view:'index',model:[facadasList:lista,jogadoresList:jogadores])
 		
 		

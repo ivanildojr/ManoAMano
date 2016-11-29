@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${vitimaInstance?.dataFacada}">
+				<li class="fieldcontain">
+					<span id="dataFacada-label" class="property-label"><g:message code="vitima.dataFacada.label" default="Data Facada" /></span>
+					
+						<span class="property-value" aria-labelledby="dataFacada-label"><g:formatDate date="${vitimaInstance?.dataFacada}" /></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:vitimaInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

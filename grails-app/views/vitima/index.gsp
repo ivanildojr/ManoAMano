@@ -28,6 +28,8 @@
 					
 						<th><g:message code="vitima.vitima.label" default="Vitima" /></th>
 					
+						<g:sortableColumn property="dataFacada" title="${message(code: 'vitima.dataFacada.label', default: 'Data Facada')}" />
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -37,6 +39,8 @@
 						<td><g:link action="show" id="${vitimaInstance.id}">${fieldValue(bean: vitimaInstance, field: "matador")}</g:link></td>
 					
 						<td>${fieldValue(bean: vitimaInstance, field: "vitima")}</td>
+					
+						<td><g:formatDate date="${vitimaInstance.dataFacada}" /></td>
 					
 					</tr>
 				</g:each>

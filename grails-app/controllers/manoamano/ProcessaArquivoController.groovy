@@ -13,14 +13,14 @@ class ProcessaArquivoController {
 				while ((linha = reader.readLine())!=null) {
 					if(linha.contains("with \"knife\"")) {
 						
-						Facadas checkDatafacada = new Facadas()
-						String dataArquivo =  linha.substring(2, 12);
-						Date dataArquivoFormatada = Date.parse('MM/dd/yyyy',dataArquivo)
-						String dataArquivoFormatadaFinal = dataArquivoFormatada.format('yyyy-MM-dd')
-						Date dataFinalArquivo = Date.parse('yyyy-MM-dd',dataArquivoFormatadaFinal)
-						def processaArquivo = Facadas.findAllByDataFacada(dataFinalArquivo)
-						
-						if(processaArquivo.empty){
+//						Facadas checkDatafacada = new Facadas()
+//						String dataArquivo =  linha.substring(2, 12);
+//						Date dataArquivoFormatada = Date.parse('MM/dd/yyyy',dataArquivo)
+//						String dataArquivoFormatadaFinal = dataArquivoFormatada.format('yyyy-MM-dd')
+//						Date dataFinalArquivo = Date.parse('yyyy-MM-dd',dataArquivoFormatadaFinal)
+//						def processaArquivo = checkDatafacada.findAllByDataFacada(dataFinalArquivo)
+//						
+//						if(processaArquivo.empty){
 						
 						
 						//Nome do Matador
@@ -34,7 +34,7 @@ class ProcessaArquivoController {
 						
 						Jogador matador = new Jogador()
 						
-						println existeMatador.empty
+						
 						
 						if(existeMatador.empty){
 							matador.nome = nomeMatador
@@ -71,6 +71,7 @@ class ProcessaArquivoController {
 						assassinato.matador = matador
 						assassinato.vitima = vitima
 						
+						
 						Facadas facada = new Facadas()
 						
 						facada.qtdeFacadas = 1;
@@ -91,8 +92,10 @@ class ProcessaArquivoController {
 						
 						facada.vitima = assassinato 
 						
+						assassinato.dataFacada = dataFinal
 						
-						def existeAssassianto = Vitima.findAllByMatadorAndVitima(matador,vitima)
+						
+						def existeAssassianto = Vitima.findAllByMatadorAndVitimaAndDataFacada(matador,vitima,dataFinal)
 						println "O assassinato encontrato é: " + assassinato
 						
 						if(existeAssassianto.empty){
@@ -114,6 +117,9 @@ class ProcessaArquivoController {
 						}else{
 							facada = existeFacadas.get(0)
 							println "Facada:" + facada + " Quantidade de facadas antes: " + facada.qtdeFacadas
+							//Automatic Dirty Detection - persiste a alteração mesmo sem mandarmos salvar. Caso não se queira
+							//o comportamento, usar read ao invés de get()
+							//fonte: http://stackoverflow.com/questions/32503852/grails-2-4-4-updating-a-user-auto-saves-user-before-hitting-back-end-code
 							facada.qtdeFacadas +=1
 							println "Facada:" + facada + " Quantidade de facadas depois: " + facada.qtdeFacadas
 						}
@@ -124,10 +130,10 @@ class ProcessaArquivoController {
 						
 						
 						
-						}else{
-							println "O arquivo ja havia sido processado no banco de dados: " + file.getName() + " !!!!"
-							break
-						}
+//						}else{
+//							println "O arquivo ja havia sido processado no banco de dados: " + file.getName() + " !!!!"
+//							break
+//						}
 					}	
 				}
 			}
