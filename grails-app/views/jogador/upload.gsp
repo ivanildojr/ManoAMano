@@ -22,15 +22,9 @@
 			<%erro = "deu errado" %>
 		</uploadr:onSuccess>
 
-		<g:formRemote name="formProduto"
-			url="[controller: 'processaArquivo', action: 'rodar']"
-			update="divMensagem">
-
-		</g:formRemote>
-		<g:remoteLink url="[controller: 'ProcessaArquivo', action: 'rodar']"
-			useToken="true">
-			<input type="button" value="Rodar" class="button" />
-		</g:remoteLink>
+				
+		<g:link controller="ProcessaArquivo" action="redireciona" class="button">Processar Arquivos</g:link>
+		
 		<div id="divForm"></div>
 	</div>
 </body>

@@ -9,7 +9,6 @@ class RelatorioController {
 	static defaultAction = "principal"
 	
 	def principal(){
-		
 		def datas = Facadas.where {}.projections { distinct 'dataFacada' }
 		render(view:'principal',model:[datasList:datas])
 		 
